@@ -13,8 +13,10 @@ connection();
 
 // routes
 import Authentication from "./routes/Authentication.js";
+import Notes from "./routes/Notes.js";
 
 app.use("/auth", Authentication);
+app.use("/notes", Notes);
 
 app.listen(process.env.PORT, () => {
 	console.log("Listening on port", process.env.PORT);
