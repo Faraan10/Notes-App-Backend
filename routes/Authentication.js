@@ -3,9 +3,10 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/UserModel.js";
 import sendOtp from "../utils/emailService.js";
+import cors from "cors";
 
 const router = express.Router();
-
+router.use(cors());
 router.get("/", async (req, res) => {
   const data = await User.find({});
   res.status(200).json(data);
@@ -170,7 +171,7 @@ router.post("/login/verify-otp", async (req, res) => {
     }
   );
 
-  res.json({ message: "User Logged In", token });
+  res.status(200).json({ message: "User Logged In", token });
 });
 
 // till here
